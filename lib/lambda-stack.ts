@@ -13,9 +13,9 @@ export class LambdaStack extends Stack {
     super(scope, id, props);
 
     new NodejsFunction(this, "cicd-lambda", {
-      runtime: Runtime.NODEJS_LATEST,
+      runtime: Runtime.NODEJS_20_X,
       handler: "handler",
-      entry: join(""),
+      entry: join(__dirname, "..", "lib", "handler.ts"),
       functionName: `${props.stageName}-cicd-lambda`,
     });
   }
